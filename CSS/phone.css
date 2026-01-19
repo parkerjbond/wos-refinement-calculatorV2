@@ -309,6 +309,7 @@ select::-ms-expand {
     grid-template-rows: auto;
     gap: 32px;
     padding: 8px;
+    align-items: center;
 }
 
 .child-two > .cell-container > .cell-one > :nth-child(2) > div,
@@ -320,7 +321,12 @@ select::-ms-expand {
 
 .child-two > .cell-container > .cell-one > :nth-child(2) > input,
 .child-two > .cell-container > .cell-one > :nth-child(3) > input {
+    align-self: center;
+    justify-self: end;
+    margin: 0;
+    height: 20px;
     width: 20px;
+    vertical-align: middle;
 }
 
 .child-two > .cell-container > .cell-two,
