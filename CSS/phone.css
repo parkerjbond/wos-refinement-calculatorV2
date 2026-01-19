@@ -42,7 +42,7 @@
 .child-one > .cell-container > .cell-three {grid-area: cell-three;}
 .child-one > .cell-container > .cell-four {grid-area: cell-four;}
 .child-one > .cell-container > .cell-five {grid-area: cell-five;}
-.child-one > .cell-container > .cell-six {grid-area: cell-six;}
+.child-one > .cell-container > .cell-six {grid-area: cell-six; background-color: var(--button-color);}
 
 .child-one > .cell-container > div {
     display: flex;
@@ -172,6 +172,7 @@ select {
 option {
     text-align: center;
 }
+
 
 select::-ms-expand {
   display: none;
