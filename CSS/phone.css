@@ -7,6 +7,13 @@
     border-radius: var(--border-radius);
 }
 
+.body-grid > div {
+    background-color: var(--background-color);
+    padding: 8px;  
+    display: grid; 
+    /* height: fit-content; UNBLUR LATER */
+}
+
 /* ============= */
 /* === Media === */
 /* ============= */
@@ -19,6 +26,18 @@
 /* ================= */
 /* === Child One === */
 /* ================= */
+
+.body-grid > div.child-one {
+    grid-template-rows: 240px 0fr;
+
+    height: fit-content; /*Remove Later*/
+}
+
+.body-grid > div.child-one.is-expanded {
+    grid-template-rows: 240px 1fr;
+    gap: 8px;
+}
+
 
 .child-one > .cell-container {
     width: 100%;
@@ -159,14 +178,14 @@
 }
 
 select {
-  -webkit-appearance: none; /* Chrome, Safari */
-  -moz-appearance: none;    /* Firefox */
-  appearance: none;         /* Standard */
-  background-image: none;   /* IE/Edge legacy */
+    -webkit-appearance: none; /* Chrome, Safari */
+    -moz-appearance: none;    /* Firefox */
+    appearance: none;         /* Standard */
+    background-image: none;   /* IE/Edge legacy */
 
-  text-align: center;
-  text-align-last: center;
-  -moz-text-align-last: center;
+    text-align: center;
+    text-align-last: center;
+    -moz-text-align-last: center;
 }
 
 option {
@@ -176,21 +195,6 @@ option {
 
 select::-ms-expand {
   display: none;
-}
-
-.body-grid > div.child-one {
-    background-color: var(--background-color);
-    padding: 8px;
-
-    display: grid;
-    grid-template-rows: 240px 0fr;
-
-    height: fit-content;
-}
-
-.body-grid > div.child-one.is-expanded {
-    grid-template-rows: 240px 1fr;
-    gap: 8px;
 }
 
 .child-one > div.cell-drawer {
@@ -206,3 +210,156 @@ select::-ms-expand {
 /* ================= */
 /* === Child Two === */
 /* ================= */
+
+.body-grid > div.child-two {
+    display: grid;
+    grid-template-rows: 240px;
+    min-height: 0;
+    height: fit-content;
+}
+
+/* the inner grid container (same role as child-one .cell-container) */
+.child-two > .cell-container {
+    width: 100%;
+    height: 100%;
+
+    border: var(--border);
+    border-radius: var(--border-radius);
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "cell-one cell-two"
+        "cell-one cell-three";
+
+    overflow: hidden; /* keeps radius clean */
+}
+
+/* assign areas (now this works because .cell-container is grid) */
+.child-two > .cell-container > .cell-one { grid-area: cell-one; }
+.child-two > .cell-container > .cell-two { grid-area: cell-two; }
+.child-two > .cell-container > .cell-three { grid-area: cell-three; }
+
+/* style cells like child-one */
+.child-two > .cell-container > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--cell-background-color);
+    min-width: 0;
+    min-height: 0;
+}
+
+/* borders between cells (like your child-one top borders/left borders) */
+.child-two > .cell-container > .cell-two,
+.child-two > .cell-container > .cell-three {
+    border-left: var(--border);
+}
+
+.child-two > .cell-container > .cell-three {
+    border-top: var(--border);
+}
+
+/* rounded corners (don’t rely on nth-child if order changes) */
+.child-two > .cell-container > .cell-one {
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    align-content: stretch;
+    justify-content: stretch;
+    min-height: 0;
+    min-width: 0;
+}
+
+
+.child-two > .cell-container > .cell-one > div {
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.child-two > .cell-container > .cell-one > .construction-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    padding: 8px;
+}
+
+.child-two > .cell-container > .cell-one > .construction-box input {
+    border: var(--border);
+    border-radius: var(--border-radius);
+    background-color: var(--cell-background-color);
+    color: var(--cell-text-color);
+    width: 45%;
+    aspect-ratio: 2;
+    text-align: center;
+}
+
+.child-two > .cell-container > .cell-one > :nth-child(2),
+.child-two > .cell-container > .cell-one > :nth-child(3) {
+    border: 1px solid white;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: auto;
+    gap: 32px;
+    padding: 8px;
+}
+
+.child-two > .cell-container > .cell-one > :nth-child(2) > div,
+.child-two > .cell-container > .cell-one > :nth-child(3) > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.child-two > .cell-container > .cell-one > :nth-child(2) > input,
+.child-two > .cell-container > .cell-one > :nth-child(3) > input {
+    width: 20px;
+}
+
+.child-two > .cell-container > .cell-two,
+.child-two > .cell-container > .cell-three {
+    border-radius: 0 var(--border-radius) 0 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2fr;
+    align-content: stretch;
+    justify-content: stretch;
+    min-height: 0;
+    min-width: 0;
+}
+
+.child-two > .cell-container > .cell-two > div,
+.child-two > .cell-container > .cell-three > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    padding: 8px;
+    width: 100%;
+    height: 100%;
+}
+
+.child-two > .cell-container > .cell-two > div > select,
+.child-two > .cell-container > .cell-three > div > select {
+    border: var(--border);
+    border-radius: var(--border-radius);
+    background-color: var(--cell-background-color);
+    color: var(--cell-text-color);
+    width: 50%;
+    aspect-ratio: 1.5;
+    text-align: center;
+}
+
+
+.child-two > .cell-container > .cell-three {
+    border-radius: 0 0 var(--border-radius) 0;
+}
+
