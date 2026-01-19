@@ -62,7 +62,7 @@ h3 {
 .body-grid{
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: auto 240px 240px 240px;
+  grid-template-rows: auto 258px 258px 258px;
 
   border: var(--border);
   border-radius: var(--border-radius);
