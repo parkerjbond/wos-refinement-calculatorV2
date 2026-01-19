@@ -163,6 +163,14 @@ select {
   -moz-appearance: none;    /* Firefox */
   appearance: none;         /* Standard */
   background-image: none;   /* IE/Edge legacy */
+
+  text-align: center;
+  text-align-last: center;
+  -moz-text-align-last: center;
+}
+
+option {
+    text-align: center;
 }
 
 select::-ms-expand {
