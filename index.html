@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="CSS/main.css">
     <link rel="stylesheet" href="CSS/phone.css">
 
+    <script src="JS/key.js" defer></script>
     <script src="JS/main.js" defer></script>
 </head>
 <body>
@@ -22,20 +23,20 @@
                         <h1>All Buildings</h1></div>
                     <div class="cell-two">
                         <h3>From</h3>
-                        <select name="" id="">
-                            <option value="">FC5</option>
-                            <option value="">FC6</option>
-                            <option value="">FC7</option>
-                            <option value="">FC8</option>
+                        <select name="" id="global-from">
+                            <option value="5">FC5</option>
+                            <option value="6">FC6</option>
+                            <option value="7">FC7</option>
+                            <option value="8">FC8</option>
                         </select>
                     </div>
                     <div class="cell-three">
                         <h3>To</h3>
-                        <select name="" id="">
-                            <option value="">FC5</option>
-                            <option value="">FC6</option>
-                            <option value="">FC7</option>
-                            <option value="">FC8</option>
+                        <select name="" id="global-to">
+                            <option value="5">FC5</option>
+                            <option value="6">FC6</option>
+                            <option value="7">FC7</option>
+                            <option value="8">FC8</option>
                         </select>                       
                     </div>
 
@@ -45,7 +46,7 @@
                             <img src="IMAGES/Fire Crystal.png" alt="">
                         </div>
                         <div class="output-box">
-                            <h2>1,304</h2>
+                            <h2 id="totalFC"></h2>
                         </div>
                     </div>
                     <div class="cell-five">
@@ -54,7 +55,7 @@
                         </div>
                         
                         <div class="output-box">
-                            <h2>1,304</h2>
+                            <h2 id="totalRC"></h2>
                         </div>
                     </div>
 
@@ -93,20 +94,24 @@
                             <h3>Furnace</h3>
                         </div>
                         <div class="cell-middle">
-                            <select name="" id="">
-                                <option value="">FC5</option>
-                                <option value="">FC6</option>
-                                <option value="">FC7</option>
-                                <option value="">FC8</option>
+                            <select name="" id="furnace-from">
+                                <option value="5">FC5</option>
+                                <option value="6">FC6</option>
+                                <option value="7">FC7</option>
+                                <option value="8">FC8</option>
                             </select>
                         </div>
                         <div class="cell-right">
-                            <select name="" id="">
-                                <option value="">FC5</option>
-                                <option value="">FC6</option>
-                                <option value="">FC7</option>
-                                <option value="">FC8</option>
+                            <select name="" id="furnace-to">
+                                <option value="5">FC5</option>
+                                <option value="6">FC6</option>
+                                <option value="7">FC7</option>
+                                <option value="8">FC8</option>
                             </select>
+                        </div>
+                        <div class="output-box">
+                            <div id="furnaceFC"></div>
+                            <div id="furnaceRC"></div>
                         </div>
                     </div>
                     <div class="cell-four cell-container">
@@ -114,179 +119,215 @@
                             <h3>Infantry Camp</h3>
                         </div>
                         <div class="cell-middle">
-                            <select name="" id="">
-                                <option value="">FC5</option>
-                                <option value="">FC6</option>
-                                <option value="">FC7</option>
-                                <option value="">FC8</option>
+                            <select name="" id="infantry-camp-from">
+                                <option value="5">FC5</option>
+                                <option value="6">FC6</option>
+                                <option value="7">FC7</option>
+                                <option value="8">FC8</option>
                             </select>
                         </div>
                         <div class="cell-right">
-                            <select name="" id="">
-                                <option value="">FC5</option>
-                                <option value="">FC6</option>
-                                <option value="">FC7</option>
-                                <option value="">FC8</option>
+                            <select name="" id="infantry-camp-to">
+                                <option value="5">FC5</option>
+                                <option value="6">FC6</option>
+                                <option value="7">FC7</option>
+                                <option value="8">FC8</option>
                             </select>
                         </div>
+                        <div class="output-box">
+                            <div id="infantryCampFC"></div>
+                            <div id="infantryCampRC"></div>
+                        </div>
+
                     </div>
                     <div class="cell-five cell-container">
                         <div class="cell-left">
                             <h3>Embassy</h3>
                         </div>
                         <div class="cell-middle">
-                            <select name="" id="">
-                                <option value="">FC5</option>
-                                <option value="">FC6</option>
-                                <option value="">FC7</option>
-                                <option value="">FC8</option>
+                            <select name="" id="embassy-from">
+                                <option value="5">FC5</option>
+                                <option value="6">FC6</option>
+                                <option value="7">FC7</option>
+                                <option value="8">FC8</option>
                             </select>
                         </div>
                         <div class="cell-right">
-                            <select name="" id="">
-                                <option value="">FC5</option>
-                                <option value="">FC6</option>
-                                <option value="">FC7</option>
-                                <option value="">FC8</option>
+                            <select name="" id="embassy-to">
+                                <option value="5">FC5</option>
+                                <option value="6">FC6</option>
+                                <option value="7">FC7</option>
+                                <option value="8">FC8</option>
                             </select>
                         </div>
+
+                        <div class="output-box">
+                            <div id="embassyFC"></div>
+                            <div id="embassyRC"></div>
+                        </div>
+
                     </div>
                     <div class="cell-six cell-container">
                         <div class="cell-left">
                             <h3>Marksman Camp</h3>
                         </div>
                         <div class="cell-middle">
-                            <select name="" id="">
-                                <option value="">FC5</option>
-                                <option value="">FC6</option>
-                                <option value="">FC7</option>
-                                <option value="">FC8</option>
+                            <select name="" id="marksman-camp-from">
+                                <option value="5">FC5</option>
+                                <option value="6">FC6</option>
+                                <option value="7">FC7</option>
+                                <option value="8">FC8</option>
                             </select>
                         </div>
                         <div class="cell-right">
-                            <select name="" id="">
-                                <option value="">FC5</option>
-                                <option value="">FC6</option>
-                                <option value="">FC7</option>
-                                <option value="">FC8</option>
+                            <select name="" id="marksman-camp-to">
+                                <option value="5">FC5</option>
+                                <option value="6">FC6</option>
+                                <option value="7">FC7</option>
+                                <option value="8">FC8</option>
                             </select>
                         </div>
+                        <div class="output-box">
+                            <div id="marksmanCampFC"></div>
+                            <div id="marksmanCampRC"></div>
+                        </div>
+
                     </div>
                     <div class="cell-seven cell-container">
                         <div class="cell-left">
                             <h3>Command Center</h3>
                         </div>
                         <div class="cell-middle">
-                            <select name="" id="">
-                                <option value="">FC5</option>
-                                <option value="">FC6</option>
-                                <option value="">FC7</option>
-                                <option value="">FC8</option>
+                            <select name="" id="command-center-from">
+                                <option value="5">FC5</option>
+                                <option value="6">FC6</option>
+                                <option value="7">FC7</option>
+                                <option value="8">FC8</option>
                             </select>
                         </div>
                         <div class="cell-right">
-                            <select name="" id="">
-                                <option value="">FC5</option>
-                                <option value="">FC6</option>
-                                <option value="">FC7</option>
-                                <option value="">FC8</option>
+                            <select name="" id="command-center-to">
+                                <option value="5">FC5</option>
+                                <option value="6">FC6</option>
+                                <option value="7">FC7</option>
+                                <option value="8">FC8</option>
                             </select>
                         </div>
+                        <div class="output-box">
+                            <div id="commandCenterFC"></div>
+                            <div id="commandCenterRC"></div>
+                        </div>
+
                     </div>
                     <div class="cell-eight cell-container">
                         <div class="cell-left">
                             <h3>Lancer Camp</h3>
                         </div>
                         <div class="cell-middle">
-                            <select name="" id="">
-                                <option value="">FC5</option>
-                                <option value="">FC6</option>
-                                <option value="">FC7</option>
-                                <option value="">FC8</option>
+                            <select name="" id="lancer-camp-from">
+                                <option value="5">FC5</option>
+                                <option value="6">FC6</option>
+                                <option value="7">FC7</option>
+                                <option value="8">FC8</option>
                             </select>
                         </div>
                         <div class="cell-right">
-                            <select name="" id="">
-                                <option value="">FC5</option>
-                                <option value="">FC6</option>
-                                <option value="">FC7</option>
-                                <option value="">FC8</option>
+                            <select name="" id="lancer-camp-to">
+                                <option value="5">FC5</option>
+                                <option value="6">FC6</option>
+                                <option value="7">FC7</option>
+                                <option value="8">FC8</option>
                             </select>
                         </div>
+                        <div class="output-box">
+                            <div id="lancerCampFC"></div>
+                            <div id="lancerCampRC"></div>
+                        </div>
+
                     </div>
                     <div class="cell-nine cell-container">
                         <div class="cell-left">
                             <h3>War Academy</h3>
                         </div>
                         <div class="cell-middle">
-                            <select name="" id="">
-                                <option value="">FC5</option>
-                                <option value="">FC6</option>
-                                <option value="">FC7</option>
-                                <option value="">FC8</option>
+                            <select name="" id="war-academy-from">
+                                <option value="5">FC5</option>
+                                <option value="6">FC6</option>
+                                <option value="7">FC7</option>
+                                <option value="8">FC8</option>
                             </select>
                         </div>
                         <div class="cell-right">
-                            <select name="" id="">
-                                <option value="">FC5</option>
-                                <option value="">FC6</option>
-                                <option value="">FC7</option>
-                                <option value="">FC8</option>
+                            <select name="" id="war-academy-to">
+                                <option value="5">FC5</option>
+                                <option value="6">FC6</option>
+                                <option value="7">FC7</option>
+                                <option value="8">FC8</option>
                             </select>
                         </div>
+                        <div class="output-box">
+                            <div id="warAcademyFC"></div>
+                            <div id="warAcademyRC"></div>
+                        </div>
+
                     </div>
                     <div class="cell-ten cell-container">
                         <div class="cell-left">
                             <h3>Infirmary</h3>
                         </div>
                         <div class="cell-middle">
-                            <select name="" id="">
-                                <option value="">FC5</option>
-                                <option value="">FC6</option>
-                                <option value="">FC7</option>
-                                <option value="">FC8</option>
+                            <select name="" id="infirmary-from">
+                                <option value="5">FC5</option>
+                                <option value="6">FC6</option>
+                                <option value="7">FC7</option>
+                                <option value="8">FC8</option>
                             </select>
                         </div>
                         <div class="cell-right">
-                            <select name="" id="">
-                                <option value="">FC5</option>
-                                <option value="">FC6</option>
-                                <option value="">FC7</option>
-                                <option value="">FC8</option>
+                            <select name="" id="infirmary-to">
+                                <option value="5">FC5</option>
+                                <option value="6">FC6</option>
+                                <option value="7">FC7</option>
+                                <option value="8">FC8</option>
                             </select>
                         </div>
+                        <div class="output-box">
+                            <div id="infirmaryFC"></div>
+                            <div id="infirmaryRC"></div>
+                        </div>
+
                     </div>
 
                 </div>
 
             </div>
 
-            <div class="child-two" id="child-two">
+            <div class="child-two">
 
                 <div class="cell-container">
                     <div class="cell-one">
                         <div class="construction-box">
                             <h3>Construction Speed</h3>
-                            <input type="number" name="" id="" placeholder="Enter %">
+                            <input type="number" name="" id="construction-speed-input" placeholder="Enter %">
                         </div>
                         <div class="double-time-box">
                             <div>
                                 <h3>Double Time</h3>
                             </div>
-                            <input type="checkbox" name="" id="">
+                            <input type="checkbox" name="" id="double-time-checkbox">
                         </div>
                         <div class="vice-president-box">
                             <div>
                                 <h3>Vice President</h3>
                             </div>
-                            <input type="checkbox" name="" id="">
+                            <input type="checkbox" name="" id="vice-president-checkbox">
                         </div>
                     </div>
                     <div class="cell-two">
                         <div><h2>Agnes</h2></div>
                         <div>
                             <h3>Project Management</h3>
-                            <select name="" id="">
+                            <select name="" id="agnes-level">
                                 <option value="0">Level 0</option>
                                 <option value="1">Level 1</option>
                                 <option value="2">Level 2</option>
@@ -301,7 +342,7 @@
                         <div><h2>Hyena</h2></div>
                         <div>
                             <h3>Builder's Aide</h3>
-                            <select name="" id="">
+                            <select name="" id="hyena-level">
                                 <option value="0">Level 0</option>
                                 <option value="1">Level 1</option>
                                 <option value="2">Level 2</option>
@@ -314,8 +355,6 @@
                 </div>
 
             </div>
-
-
             <div class="child-three">
                 <div class="cell-container">
                     <div class="input-container">
@@ -323,14 +362,14 @@
                             <div>
                                 <h3>Weeks</h3>
                             </div>
-                            <input type="text" placeholder="Weeks">
+                            <input type="text" placeholder="Weeks" id="week-input">
                         </div>
                         <div>
                             <div>
                                 <h3>Starting Refined</h3>
                             </div>
                             
-                            <input type="text" placeholder="Refined">
+                            <input type="text" placeholder="Refined" id="startingRCinput">
                         </div>
                     </div>
 
@@ -346,15 +385,15 @@
                         <div class="cell-nine"><h3>Per Week</h3></div>
                         <div class="cell-ten"><h3>Total Cost</h3></div>
                         <div class="cell-eleven"><h3>Refine</h3></div>
-                        <div class="cell-twelve"><h3>0</h3></div>
-                        <div class="cell-thirteen"><h3>0</h3></div>
-                        <div class="cell-fourteen"><h3>0</h3></div>
-                        <div class="cell-fifteen"><h3>0</h3></div>
-                        <div class="cell-sixteen"><h3>0</h3></div>
-                        <div class="cell-seventeen"><h3>0</h3></div>
-                        <div class="cell-eighteen"><h3>0</h3></div>
-                        <div class="cell-nineteen"><h3>0</h3></div>
-                        <div class="cell-twenty"><h3>0</h3></div>
+                        <div class="cell-twelve"><h3 id="day1output">0</h3></div>
+                        <div class="cell-thirteen"><h3 id="day2output">0</h3></div>
+                        <div class="cell-fourteen"><h3 id="day3output">0</h3></div>
+                        <div class="cell-fifteen"><h3 id="day4output">0</h3></div>
+                        <div class="cell-sixteen"><h3 id="day5output">0</h3></div>
+                        <div class="cell-seventeen"><h3 id="day6output">0</h3></div>
+                        <div class="cell-eighteen"><h3 id="day7output">0</h3></div>
+                        <div class="cell-nineteen"><h3 id="refinement-per-week-output">0</h3></div>
+                        <div class="cell-twenty"><h3 id="cost-output">0</h3></div>
 
                     </div>
                 </div>
@@ -368,32 +407,32 @@
                     <div class="cell-two">
                         <div class="fc">
                             <img src="IMAGES/Fire Crystal.png" alt="">
-                            <h2>20,000</h2>
+                            <h2 id="fc-output">20,000</h2>
 
                         </div>
                         <div class="rc">
                             <img src="IMAGES/Refined Fire Crystal.png" alt="">
-                            <h2>20,000</h2>
+                            <h2 id="rc-output">20,000</h2>
                         </div>
                         <div class="speedups">
                             <img src="IMAGES/WOS-speedup.png" alt="">
-                            <h2>501D 22H 33M</h2>
+                            <h2 id="speedup-output">501D 22H 33M</h2>
                         </div>
                         <div class="wood">
                             <img src="IMAGES/WOS-wood.png" alt="">
-                            <h2>13.4B</h2>
+                            <h2 id="wood-output">13.4B</h2>
                         </div>
                         <div class="meat">
                             <img src="IMAGES/WOS-meat.png" alt="">
-                            <h2>13.4B</h2>
+                            <h2 id="meat-output">13.4B</h2>
                         </div>
                         <div class="coal">
                             <img src="IMAGES/WOS-coal.png" alt="">
-                            <h2>1.4B</h2>
+                            <h2 id="coal-output">1.4B</h2>
                         </div>
                         <div class="iron">
                             <img src="IMAGES/WOS-iron.png" alt="">
-                            <h2>324.34M</h2>
+                            <h2 id="iron-output">324.34M</h2>
                         </div>
                     </div>
 
