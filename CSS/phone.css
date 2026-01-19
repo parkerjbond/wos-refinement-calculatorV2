@@ -369,3 +369,174 @@ select::-ms-expand {
     border-radius: 0 0 var(--border-radius) 0;
 }
 
+/* =================== */
+/* === Child Three === */
+/* =================== */
+
+.body-grid > div.child-three {
+    display: grid;
+    grid-template-rows: 240px;
+    min-height: 0;
+    height: fit-content;
+}
+
+.child-three > .cell-container {
+    width: 100%;
+    height: 100%;
+
+    border: var(--border);
+    border-radius: var(--border-radius);
+
+    display: grid;
+    overflow: hidden;
+
+    /* same “pattern” as child-one/two: define areas + let children fill */
+    grid-template-columns: 1fr;
+    grid-template-rows: .7fr 1fr;
+
+}
+
+.child-three > .cell-container > .input-container {
+    display: flex;
+}
+
+.child-three > .cell-container > .input-container > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    padding: 8px;
+    border-bottom: 1px solid white;
+}
+
+.child-three > .cell-container > .input-container > div > input {
+    border: var(--border);
+    border-radius: var(--border-radius);
+    background-color: var(--cell-background-color);
+    color: var(--cell-text-color);
+    width: 45%;
+    aspect-ratio: 2;
+    text-align: center;
+}
+
+.child-three > .cell-container > .map-container {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: 1fr 1fr;
+}
+
+.child-three > .cell-container > .map-container > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    padding: 8px;   
+
+    border-right: var(--border);
+    border-bottom: var(--border);
+}
+
+/* remove extra borders on the right edge */
+.child-three > .cell-container > .map-container > div:nth-child(10n) {
+    border-right: none;
+}
+
+/* remove extra borders on the bottom row */
+.child-three > .cell-container > .map-container > div:nth-child(n+11) {
+    border-bottom: none;
+}
+
+/* ================== */
+/* === Child Four === */
+/* ================== */
+
+.body-grid > div.child-four {
+    display: grid;
+    grid-template-rows: 240px;
+    min-height: 0;
+    height: fit-content;
+}
+
+.child-four > .cell-container {
+    width: 100%;
+    height: 100%;
+
+    border: var(--border);
+    border-radius: var(--border-radius);
+
+    display: grid;
+    overflow: hidden;
+
+    /* same “pattern” as child-one/two: define areas + let children fill */
+    grid-template-columns: 1fr;
+    grid-template-rows: .3fr 1fr;
+
+}
+
+.child-four > .cell-container > div {
+
+}
+
+.child-four > .cell-container > .cell-one {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+
+    border-bottom: 1px solid white;
+}
+
+.child-four > .cell-container > .cell-two {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-rows: 1fr 1fr 1fr;
+    padding: 8px;
+    gap: 8px;
+
+    grid-template-areas: 
+        ". speedups speedups speedups speedups ."
+        "fc fc rc rc wood wood"
+        "meat meat coal coal iron iron";
+}
+
+.child-four > .cell-container > .cell-two > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+
+    min-width: 0;
+    overflow: hidden;
+}
+
+.child-four > .cell-container > .cell-two > div > img {
+    width: 20px;
+    height: 20px;
+}
+
+.child-four > .cell-container > .cell-two > .speedups > img {
+    width: 35px;
+    height: 35px;
+}
+
+.child-four > .cell-container > .cell-two > .iron > img {
+    width: 35px;
+    height: 35px;
+}
+
+.child-four > .cell-container > .cell-two > div > h2 {
+    min-width: 0;
+    overflow: hidden;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.fc {grid-area: fc;}
+.rc { grid-area: rc; }
+.speedups { grid-area: speedups; }
+.wood { grid-area: wood; }
+.meat { grid-area: meat; }
+.coal { grid-area: coal; }
+.iron { grid-area: iron; }
