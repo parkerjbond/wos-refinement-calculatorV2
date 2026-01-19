@@ -73,5 +73,5 @@ h3 {
   max-height: 100%;   /* key */
   overflow: auto;     /* scrolling happens here */
 
-  background-color: purple;
+  background-color: var(--button-color);
 }
