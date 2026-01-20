@@ -459,8 +459,6 @@ select::-ms-expand {
 
     border-right: var(--border);
     border-bottom: var(--border);
-
-    background-color: red;
     min-width: 0;
 }
 
