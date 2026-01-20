@@ -402,6 +402,7 @@ select::-ms-expand {
 
 .child-three > .cell-container > .input-container {
     display: flex;
+    width: 100%;
 }
 
 .child-three > .cell-container > .input-container > div {
@@ -412,6 +413,9 @@ select::-ms-expand {
     gap: 8px;
     padding: 8px;
     border-bottom: 1px solid white;
+
+    flex: 1;
+    min-width: 0;
 }
 
 .child-three > .cell-container > .input-container > div > input {
@@ -428,6 +432,9 @@ select::-ms-expand {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: 1fr 1fr;
+
+    width: 100%;
+    min-width: 0;
 }
 
 .child-three > .cell-container > .map-container > div {
