@@ -432,7 +432,17 @@ select::-ms-expand {
 
 .child-three > .cell-container > .map-container {
     display: grid;
-    grid-template-columns: repeat(9, 1fr) 2fr;
+    grid-template-columns: 
+    2fr
+    1fr
+    1fr
+    1fr
+    1fr
+    1fr
+    1fr
+    1fr
+    2fr
+    2fr;
     grid-template-rows: 1fr 1fr;
 
     width: 100%;
@@ -449,6 +459,9 @@ select::-ms-expand {
 
     border-right: var(--border);
     border-bottom: var(--border);
+
+    background-color: red;
+    min-width: 0;
 }
 
 /* remove extra borders on the right edge */
