@@ -37,11 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const FCOutputText = document.getElementById('fc-output');
 
   // ===== Cost output targets (optional) =====
-  const WeeklyCostNoDiscountText  = document.getElementById('weeklyCostNoDiscount');
-  const WeeklyCostWithDiscountText= document.getElementById('weeklyCostWithDiscount');
-  const TotalCostNoDiscountText   = document.getElementById('totalCostNoDiscount');
-  const TotalCostWithDiscountText = document.getElementById('totalCostWithDiscount');
-  const DiscountWhereText         = document.getElementById('discountWhere');
+  const WeeklyCostNoDiscountText   = document.getElementById('weeklyCostNoDiscount');
+  const WeeklyCostWithDiscountText = document.getElementById('weeklyCostWithDiscount');
+  const TotalCostNoDiscountText    = document.getElementById('totalCostNoDiscount');
+  const TotalCostWithDiscountText  = document.getElementById('totalCostWithDiscount');
+  const DiscountWhereText          = document.getElementById('discountWhere');
 
   // ===== Speedup time output =====
   const SpeedupOutputText = document.getElementById('speedup-output');
@@ -55,9 +55,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // ================================
   // ===== Construction buffs inputs
   // ================================
-  const ConstructionSpeedInput = document.getElementById('construction-speed-input'); // number like 80 => +80%
-  const DoubleTimeCheckbox = document.getElementById('double-time-checkbox');         // +20%
-  const VicePresidentCheckbox = document.getElementById('vice-president-checkbox');   // +10%
+  const ConstructionSpeedInput  = document.getElementById('construction-speed-input'); // number like 80 => +80%
+  const DoubleTimeCheckbox      = document.getElementById('double-time-checkbox');     // +20%
+  const VicePresidentCheckbox   = document.getElementById('vice-president-checkbox');  // +10%
 
   // Agnes dropdown id (change this if your HTML uses a different id)
   const AgnesLevelDropdown = document.getElementById('agnes-level');
@@ -66,9 +66,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const AGNES_HOURS_BY_LEVEL = { 0: 0, 1: 2, 2: 3, 3: 4, 4: 6, 5: 8 };
 
   const HyenaLevelDropdown = document.getElementById('hyena-level');
-
   const HYENA_PERCENT_BY_LEVEL = { 0: 0, 1: 5, 2: 7, 3: 9, 4: 12, 5: 15 };
 
+  // ===== Zinman (NEW) =====
+  const ZinmanLevelDropdown = document.getElementById('zinman-level');
+  // lvl1: 3%, lvl2: 6%, lvl3: 9%, lvl4: 12%, lvl5: 15%
+  const ZINMAN_PERCENT_BY_LEVEL = { 0: 0, 1: 3, 2: 6, 3: 9, 4: 12, 5: 15 };
 
   // ===== Requirements =====
   const UpgradeRequirement = {
@@ -408,9 +411,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const hyena = HYENA_PERCENT_BY_LEVEL[hyenaLevel] || 0;
 
-    return city + doubleTime + vice + hyena;
-  }
+    // Zinman level 0-5 => adds %
+    const zinmanLevelRaw = ZinmanLevelDropdown ? ZinmanLevelDropdown.value : "0";
+    let zinmanLevel = parseInt(zinmanLevelRaw, 10);
+    if (Number.isNaN(zinmanLevel)) zinmanLevel = 0;
+    if (zinmanLevel < 0) zinmanLevel = 0;
+    if (zinmanLevel > 5) zinmanLevel = 5;
 
+    const zinman = ZINMAN_PERCENT_BY_LEVEL[zinmanLevel] || 0;
+
+    return city + doubleTime + vice + hyena + zinman;
+  }
 
   function applyConstructionSpeedBuff(baseSeconds) {
     const extra = getExtraConstructionPercent();
@@ -426,7 +437,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // compressed build count already accounts for the *5
     const builds = appState.grandBuildCount || 0;
-    
+
     return hoursPerBuild * 3600 * builds;
   }
 
@@ -568,11 +579,12 @@ document.addEventListener('DOMContentLoaded', () => {
   function onBuffChange() {
     updateSpeedupOutput();
   }
-  if (ConstructionSpeedInput) ConstructionSpeedInput.addEventListener('input', onBuffChange);
-  if (DoubleTimeCheckbox) DoubleTimeCheckbox.addEventListener('change', onBuffChange);
-  if (VicePresidentCheckbox) VicePresidentCheckbox.addEventListener('change', onBuffChange);
-  if (AgnesLevelDropdown) AgnesLevelDropdown.addEventListener('change', onBuffChange);
-  if (HyenaLevelDropdown) HyenaLevelDropdown.addEventListener('change', onBuffChange);
+  if (ConstructionSpeedInput)  ConstructionSpeedInput.addEventListener('input', onBuffChange);
+  if (DoubleTimeCheckbox)      DoubleTimeCheckbox.addEventListener('change', onBuffChange);
+  if (VicePresidentCheckbox)   VicePresidentCheckbox.addEventListener('change', onBuffChange);
+  if (AgnesLevelDropdown)      AgnesLevelDropdown.addEventListener('change', onBuffChange);
+  if (HyenaLevelDropdown)      HyenaLevelDropdown.addEventListener('change', onBuffChange);
+  if (ZinmanLevelDropdown)     ZinmanLevelDropdown.addEventListener('change', onBuffChange); // NEW
 
   function bindBuilding(towerType, fromDropdown, toDropdown, fcOutput, rcOutput) {
     const building = {
